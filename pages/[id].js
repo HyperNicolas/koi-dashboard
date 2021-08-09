@@ -26,8 +26,8 @@ const StyledTitle = styled(Title)`
   padding-bottom: 0;
 `;
 
-const VarietyPage = ({ kois }) =>
-  kois ? (
+const VarietyPage = ({ kois }) => {
+  return kois ? (
     <section>
       <StyledTitle>All your {kois[0].variety}s</StyledTitle>
       <div className="cp-c-row cp-c-align-start-start cp-c-padding-3">
@@ -37,7 +37,7 @@ const VarietyPage = ({ kois }) =>
   ) : (
     <div />
   );
-
+};
 export default VarietyPage;
 
 export async function getStaticProps({ params, preview = false }) {
