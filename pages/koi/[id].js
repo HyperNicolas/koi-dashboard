@@ -104,58 +104,60 @@ const DetailPage = ({ koi }) => {
     ],
   };
   return (
-    <SRLWrapper elements={getImages(koi)}>
-      <Title>
-        {koi.breeder} {koi.bloodline} {koi.variety}
-      </Title>
-      <PictureEvolution>
-        <Card>
-          <SubTitle>Picture evolution</SubTitle>
-          <div className="cp-c-row cp-c-align-center-center">
-            {koi.updates.map(({ length, date, image }, index) => (
-              <div className="cp-i-15" key={index}>
-                <ImageContainer>
-                  <Image
-                    src={urlFor(image)}
-                    layout="fill"
-                    objectFit="contain"
-                    alt="age"
-                    priority
-                  />
-                </ImageContainer>
-                <Date>{getFormattedDate(date)}</Date>
-                <div className="cp-c-row cp-c-align-center-center">
-                  <Size>{length}cm</Size>
-                  <Age>{getCurrentAgeText(koi.birthDate)}</Age>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Card>
-      </PictureEvolution>
-
-      <div className="cp-c-row cp-c-padding-3">
-        <div className="cp-i-50">
-          <Card padding="0">
-            <IframeContainer>
-              <StyledReactPlayer
-                type="text/html"
-                width="100%"
-                height="100%"
-                src={koi.youtube}
-                frameBorder="0"
-              />
-            </IframeContainer>
-          </Card>
-        </div>
-        <div className="cp-i-50">
+    koi && (
+      <SRLWrapper elements={getImages(koi)}>
+        <Title>
+          {koi.breeder} {koi.bloodline} {koi.variety}
+        </Title>
+        <PictureEvolution>
           <Card>
-            <SubTitle>Size evolution</SubTitle>
-            <Line data={data} width={null} height={null} options={options} />
+            <SubTitle>Picture evolution</SubTitle>
+            <div className="cp-c-row cp-c-align-center-center">
+              {koi.updates.map(({ length, date, image }, index) => (
+                <div className="cp-i-15" key={index}>
+                  <ImageContainer>
+                    <Image
+                      src={urlFor(image)}
+                      layout="fill"
+                      objectFit="contain"
+                      alt="age"
+                      priority
+                    />
+                  </ImageContainer>
+                  <Date>{getFormattedDate(date)}</Date>
+                  <div className="cp-c-row cp-c-align-center-center">
+                    <Size>{length}cm</Size>
+                    <Age>{getCurrentAgeText(koi.birthDate)}</Age>
+                  </div>
+                </div>
+              ))}
+            </div>
           </Card>
+        </PictureEvolution>
+
+        <div className="cp-c-row cp-c-padding-3">
+          <div className="cp-i-50">
+            <Card padding="0">
+              <IframeContainer>
+                <StyledReactPlayer
+                  type="text/html"
+                  width="100%"
+                  height="100%"
+                  src={koi.youtube}
+                  frameBorder="0"
+                />
+              </IframeContainer>
+            </Card>
+          </div>
+          <div className="cp-i-50">
+            <Card>
+              <SubTitle>Size evolution</SubTitle>
+              <Line data={data} width={null} height={null} options={options} />
+            </Card>
+          </div>
         </div>
-      </div>
-    </SRLWrapper>
+      </SRLWrapper>
+    )
   );
 };
 
