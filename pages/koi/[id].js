@@ -135,7 +135,7 @@ const DetailPage = ({ koi }) => {
       </PictureEvolution>
 
       <div className="cp-c-row cp-c-padding-3">
-        <div className="cp-i-50">
+        <div className="cp-i-100 cp-i-md-50">
           <Card padding="0">
             <IframeContainer>
               <StyledReactPlayer
@@ -148,7 +148,7 @@ const DetailPage = ({ koi }) => {
             </IframeContainer>
           </Card>
         </div>
-        <div className="cp-i-50">
+        <div className="cp-i-100 cp-i-md-50">
           <Card>
             <SubTitle>Size evolution</SubTitle>
             <Line data={data} width={null} height={null} options={options} />
