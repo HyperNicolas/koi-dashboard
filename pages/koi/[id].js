@@ -96,7 +96,7 @@ const DetailPage = ({ koi }) => {
     datasets: [
       {
         label: 'Size (cm)',
-        data: getData(koi),
+        data: koi && getData(koi),
         borderColor: '#3A3878',
         backgroundColor: '#3A3878',
         tension: 0.4,
