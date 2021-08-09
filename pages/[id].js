@@ -27,7 +27,7 @@ const StyledTitle = styled(Title)`
 `;
 
 const VarietyPage = ({ kois }) => {
-  return kois ? (
+  return kois[0] ? (
     <section>
       <StyledTitle>All your {kois[0].variety}s</StyledTitle>
       <div className="cp-c-row cp-c-align-start-start cp-c-padding-3">
@@ -42,11 +42,9 @@ export default VarietyPage;
 
 export async function getStaticProps({ params, preview = false }) {
   const kois = await getAllVarietyKoi(types[params.id], preview);
-  const variety = await getAllVarieties();
   return {
     props: {
       kois,
-      variety,
       preview,
     },
     revalidate: 1,
