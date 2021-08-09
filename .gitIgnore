@@ -1,0 +1,13 @@
+.next
+node_modules
+static/about/.DS_Store
+static/facet/.DS_Store
+static/icons/.DS_Store
+static/.DS_Store
+.DS_Store
+yarn.lock
+report.20191118.144131.28927.0.001.json
+report.20191209.103408.48352.0.001.json
+.env
+**/public/workbox-*.js
+**/public/sw.js
