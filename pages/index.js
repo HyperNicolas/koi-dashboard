@@ -30,7 +30,7 @@ const Home = ({ kois }) => {
   const varieties = getKois(kois);
 
   return (
-    <content>
+    <>
       <StyledTitle>All varieties</StyledTitle>
       <div className="cp-c-padding-3 cp-c-row">
         {varieties.map((variety) => (
@@ -45,7 +45,7 @@ const Home = ({ kois }) => {
           </div>
         ))}
       </div>
-    </content>
+    </>
   );
 };
 

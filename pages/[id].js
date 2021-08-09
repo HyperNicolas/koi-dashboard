@@ -42,9 +42,11 @@ export default VarietyPage;
 
 export async function getStaticProps({ params, preview = false }) {
   const kois = await getAllVarietyKoi(types[params.id], preview);
+  const variety = await getAllVarieties();
   return {
     props: {
       kois,
+      variety,
       preview,
     },
     revalidate: 1,
