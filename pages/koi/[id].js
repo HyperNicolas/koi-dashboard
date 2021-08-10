@@ -148,7 +148,7 @@ const DetailPage = ({ koi }) => {
             <div className="cp-c-row cp-c-align-start-start cp-c-md-align-center-center">
               {koi.updates.map(({ length, date, image }, index) => (
                 <Test
-                  className="cp-i-100 cp-i-md-25 cp-i-lg-20 cp-i-xl-15"
+                  className="cp-i-33 cp-i-md-25 cp-i-lg-20 cp-i-xl-15"
                   key={index}
                   onClick={() => setPhotoIndex(index)}
                 >
