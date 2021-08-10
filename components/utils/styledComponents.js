@@ -1,7 +1,7 @@
 // @flow
 
 import React, { useState, useEffect } from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const theme = {
   textColor: '#565656',
@@ -66,7 +66,7 @@ export const Title = styled.div`
   padding-bottom: 0.5rem;
 
   ${media.lg} {
-    padding: 2rem;
+    padding: 1.5rem 2rem;
     font-size: 2rem;
     line-height: 2rem;
     padding-bottom: 1rem;

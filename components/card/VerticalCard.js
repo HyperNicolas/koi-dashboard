@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Card } from '../utils/styledComponents';
 import { urlFor } from '../../lib/sanity';
-import { ImageContainer } from '../../pages/koi/[id]';
+import { ImageContainer } from '../../components/detailPage/Evolution';
 
 const StyledCard = styled(Card)`
   :hover {

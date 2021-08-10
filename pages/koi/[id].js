@@ -1,144 +1,73 @@
 import React, { useState } from 'react';
+import Popover from 'react-tiny-popover';
 import styled from 'styled-components';
-import Image from 'next/image';
-import { Line } from 'react-chartjs-2';
-import Lightbox from 'react-image-lightbox';
+import { AiOutlineDown } from 'react-icons/ai';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import { getKoiById, getAllKoisWithSlug } from '../../lib/api';
-import { urlFor } from '../../lib/sanity';
-import {
-  Title,
-  Card,
-  SubTitle,
-  media,
-  slugify,
-} from '../../components/utils/styledComponents';
-import {
-  getAgeDifferenceDate,
-  getCurrentAgeText,
-  getFormattedDate,
-} from '../../components/utils/ageCalculator';
+import { Title, slugify, media } from '../../components/utils/styledComponents';
 
-import 'react-image-lightbox/style.css';
+import Evolution from '../../components/detailPage/Evolution';
 
-const PictureEvolution = styled.div`
-  padding: 0 0.5rem;
-  margin-top: 1rem;
+const PopoverContainer = styled.div`
+  padding-right: 0.5rem;
+  font-size: 1rem;
 
   ${media.md} {
-    padding: 0 1rem;
+    padding-right: 1rem;
+    font-size: 1.2rem;
   }
   ${media.lg} {
-    padding: 0 2rem;
-  } ;
-`;
-export const ImageContainer = styled.div`
-  position: relative;
-  padding-top: 160%;
-
+    padding-right: 2rem;
+  }
   :hover {
     cursor: pointer;
   }
 `;
-const Date = styled.div`
-  padding-top: 0.5rem;
-  font-size: 0.8rem;
-  text-align: center;
-  font-weight: 300;
-  color: ${(props) => props.theme.textColor};
-`;
-const Size = styled.div`
-  font-size: 1.3rem;
-  text-align: center;
-  font-weight: 600;
-  color: ${(props) => props.theme.mainColor};
-  padding-right: 0.4rem;
-`;
-const Age = styled.div`
-  font-size: 1.3rem;
-  text-align: center;
-  color: ${(props) => props.theme.mainColor};
-`;
-const IframeContainer = styled.div`
-  position: relative;
-  overflow: hidden;
-  padding-top: 56.25%;
-  border-radius: 20px;
-`;
-const StyledReactPlayer = styled.iframe`
-  position: absolute;
-  top: 0;
-  left: 0;
-  border: 0;
-  z-index: 2;
-  border-radius: 10px;
-`;
-const ImagesContainer = styled.div`
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-`;
-const Test = styled.div`
-  display: inline-block !important;
-  min-width: 150px;
-
-  ${media.xxl} {
-    max-width: 12% !important;
+const Filter = styled.span`
+  background: #fff;
+  padding: 1rem;
+  box-shadow: 10px 11px 40px rgba(20, 61, 123, 0.05);
+  border-radius: 5px;
+  ${media.md} {
+    color: ${(props) => props.theme.mainColor};
   }
 `;
+const StyledPopover = styled(Popover)`
+  line-height: 1rem;
+`;
+const ContainerSyle = {
+  background: '#fff',
+  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
+  zIndex: '101',
+};
+const FilterOption = styled.div`
+  text-align: center;
+  padding: 0.5rem 1.5rem;
+  background: ${(props) =>
+    props.active && `${props.theme.mainColor} !important`};
+  color: ${(props) => props.active && '#fff !important'};
+  margin: 1px 0;
 
-const options = {
-  scales: {
-    x: {
-      grid: {
-        display: false,
-      },
-    },
-    y: {
-      grid: {
-        display: false,
-      },
-    },
-  },
-};
-const getImages = (koi) => {
-  let images = [];
-  koi.updates.map(({ image }) => (images = [...images, urlFor(image)]));
-  return images;
-};
+  :hover {
+    background: ${(props) => !props.active && '#f3f1f1'};
+    cursor: pointer;
+  }
+
+  ${media.md} {
+    background: #fff;
+    color: ${(props) => props.theme.textColor};
+  }
+`;
+export const StyledIcon = styled(AiOutlineDown)`
+  margin: 0 0.3rem;
+  font-size: 1rem;
+`;
+
+const filterOptions = [{ title: 'Evolution' }, { title: 'History' }];
 
 const DetailPage = ({ koi }) => {
   const [visible, setVisible] = useState(false);
-  const [photoIndex, setPhotoIndex] = useState(0);
-
-  const getData = (koi) => {
-    let data = [];
-    koi.updates.map(
-      ({ date, length }) =>
-        (data = [
-          ...data,
-          {
-            x: `${getAgeDifferenceDate(koi.birthDate, date)} months`,
-            y: length,
-          },
-        ])
-    );
-    return data;
-  };
-
-  const data = {
-    datasets: [
-      {
-        label: 'Size (cm)',
-        data: koi && getData(koi),
-        borderColor: '#3A3878',
-        backgroundColor: '#3A3878',
-        tension: 0.4,
-      },
-    ],
-  };
-  const images = koi && getImages(koi);
-
+  const [dropdown, setDropdown] = useState('Evolution');
   return koi ? (
     <>
       <Breadcrumbs
@@ -147,78 +76,36 @@ const DetailPage = ({ koi }) => {
           koi.bloodline ? koi.bloodline : ''
         } ${koi.variety}`}
       />
-      <Title>
-        {koi.breeder} {koi.bloodline} {koi.variety}
-      </Title>
-      <PictureEvolution>
-        <Card>
-          <SubTitle>Picture evolution</SubTitle>
-          <ImagesContainer>
-            <div className="cp-c-row cp-c-align-start-start cp-c-md-align-center-center">
-              {koi.updates.map(({ length, date, image }, index) => (
-                <Test
-                  className="cp-i-33 cp-i-md-25 cp-i-lg-20 cp-i-xl-15"
-                  key={index}
-                  onClick={() => setPhotoIndex(index)}
-                >
-                  <div onClick={() => setVisible(true)}>
-                    <ImageContainer>
-                      <Image
-                        src={urlFor(image)}
-                        layout="fill"
-                        objectFit="contain"
-                        alt="age"
-                        priority
-                      />
-                    </ImageContainer>
-                    <Date>{getFormattedDate(date)}</Date>
-                    <div className="cp-c-row cp-c-align-center-center">
-                      <Size>{length}cm</Size>
-                      <Age>{getCurrentAgeText(koi.birthDate)}</Age>
-                    </div>
-                  </div>
-                </Test>
-              ))}
-            </div>
-          </ImagesContainer>
-        </Card>
-      </PictureEvolution>
-      <div className="cp-c-row cp-c-padding-1 cp-c-md-padding-2 cp-c-lg-padding-3 cp-c-wrap">
-        <div className="cp-i-100 cp-i-md-50">
-          <Card padding="0">
-            <IframeContainer>
-              <StyledReactPlayer
-                type="text/html"
-                width="100%"
-                height="100%"
-                src={koi.youtube}
-                frameBorder="0"
-              />
-            </IframeContainer>
-          </Card>
-        </div>
-        <div className="cp-i-100 cp-i-md-50">
-          <Card>
-            <SubTitle>Size evolution</SubTitle>
-            <Line data={data} width={null} height={null} options={options} />
-          </Card>
-        </div>
+      <div className="cp-c-row cp-c-align-spacebetween-end">
+        <Title>
+          {koi.breeder} {koi.bloodline} {koi.variety}
+        </Title>
+        <PopoverContainer onClick={() => setVisible(!visible)}>
+          <StyledPopover
+            isOpen={visible}
+            onClickOutside={() => setVisible(false)}
+            position="bottom"
+            align="end"
+            containerStyle={ContainerSyle}
+            content={filterOptions.map(({ title }) => (
+              <FilterOption
+                key={title}
+                onClick={() => setDropdown(title)}
+                active={title == dropdown}
+              >
+                {title}
+              </FilterOption>
+            ))}
+          >
+            <Filter className="cp-c-row cp-c-align-start-center">
+              <span className="cp-hide cp-md-show-block">{dropdown}</span>
+              <StyledIcon />
+            </Filter>
+          </StyledPopover>
+        </PopoverContainer>
       </div>
 
-      {visible && (
-        <Lightbox
-          mainSrc={images[photoIndex]}
-          nextSrc={images[(photoIndex + 1) % images.length]}
-          prevSrc={images[(photoIndex + images.length - 1) % images.length]}
-          onCloseRequest={() => setVisible(false)}
-          onMovePrevRequest={() =>
-            setPhotoIndex((photoIndex + images.length - 1) % images.length)
-          }
-          onMoveNextRequest={() =>
-            setPhotoIndex((photoIndex + 1) % images.length)
-          }
-        />
-      )}
+      {dropdown == 'Evolution' ? <Evolution koi={koi} /> : <div>test</div>}
     </>
   ) : (
     <div />
