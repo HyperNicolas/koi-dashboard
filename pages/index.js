@@ -2,14 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import Link from 'next/link';
-import { uniq } from 'lodash';
 import { getAllKoi } from '../lib/api';
 import { Title, slugify, Card } from '../components/utils/styledComponents';
 
-export const getKois = (kois) => {
+const getKois = (kois) => {
   let varieties = [];
   kois.map(({ variety }) => (varieties = [...varieties, variety]));
-  return uniq(varieties);
+  return varieties.filter((v, i, a) => a.indexOf(v) === i);
 };
 
 const Text = styled.div`
@@ -29,13 +28,16 @@ const StyledCard = styled(Card)`
 const Home = ({ kois }) => {
   const varieties = getKois(kois);
 
-  return (
+  return kois ? (
     <>
       <StyledTitle>All varieties</StyledTitle>
-      <div className="cp-c-padding-3 cp-c-row">
+      <div className="cp-c-padding-3 cp-c-row cp-c-wrap">
         {varieties.map((variety) => (
-          <div className="cp-i-25" key={variety}>
-            <Link href="/[id]" as={`/${slugify(variety)}`}>
+          <div
+            className="cp-i-100 cp-i-sm-50 cp-i-md-33 cp-i-lg-25 cp-i-xl-20"
+            key={variety}
+          >
+            <Link href={`/${slugify(variety)}`}>
               <a>
                 <StyledCard className="cp-c-column cp-c-align-center-center">
                   <Text>{variety}</Text>
@@ -46,6 +48,8 @@ const Home = ({ kois }) => {
         ))}
       </div>
     </>
+  ) : (
+    <div />
   );
 };
 

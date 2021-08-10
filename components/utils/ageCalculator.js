@@ -1,8 +1,9 @@
-import parse from 'date-fns/parse';
-import sub from 'date-fns/sub';
-import format from 'date-fns/format';
-import differenceInCalendarMonths from 'date-fns/differenceInCalendarMonths';
-import differenceInMonths from 'date-fns/differenceInMonths';
+import {
+  parse,
+  format,
+  differenceInCalendarMonths,
+  differenceInMonths,
+} from 'date-fns';
 
 export const getCurrentAgeText = (birthDate, age) => {
   const newBirthDate = parse(birthDate, 'yyyy-MM-dd', new Date());

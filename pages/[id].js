@@ -30,7 +30,7 @@ const VarietyPage = ({ kois }) => {
   return kois && kois[0] ? (
     <section>
       <StyledTitle>All your {kois[0].variety}s</StyledTitle>
-      <div className="cp-c-row cp-c-align-start-start cp-c-padding-3">
+      <div className="cp-c-row cp-c-align-start-start cp-c-padding-3 cp-c-wrap">
         <VerticalCard kois={kois} />
       </div>
     </section>

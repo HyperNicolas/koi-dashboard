@@ -4,6 +4,8 @@ body {
   font-size: 0.9rem;
   line-height: 1.2rem;
   color: rgba(0, 0, 0, 0.65);
+  margin: 0;
+  background: linear-gradient(125.83deg, #fafbff 10%, #fafbff 86.47%);
 }
 
 a {

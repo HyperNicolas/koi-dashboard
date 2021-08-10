@@ -5,7 +5,7 @@ import styled, { css, keyframes } from 'styled-components';
 
 export const theme = {
   textColor: '#565656',
-  textColorLight: '#8c8a8a',
+  textColorLight: '#afafaf',
   textColorDark: '#404040',
   mainColor: '#3A3878',
   mainColorHighlight: '#0C4184',
@@ -61,6 +61,8 @@ export const Title = styled.div`
   padding-bottom: 1rem;
 `;
 export const SubTitle = styled.div`
+  padding: 1rem;
+  padding-bottom: 0;
   font-size: 1.5rem;
   color: ${(props) => props.theme.mainColor};
 `;
@@ -92,3 +94,24 @@ export function slugify(str) {
 
   return str.toLowerCase();
 }
+
+export const KoiSVG = () => (
+  <svg
+    clipRule="evenodd"
+    fillRule="evenodd"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeMiterlimit="1.5"
+    viewBox="0 0 1802 2031"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g
+      fill="none"
+      transform="matrix(.00036204 1 -1 .00036204 1986.27 -404.152)"
+    >
+      <path d="m2187.01 289.049c-81.67-35.815-260.62 59.681-407.32 291.432-27.02 42.682-98.48 146.633-127.88 216.425-149.35 354.614-213.73 577.534-471.15 742.504-75.77 48.56-130.92 13.17-300.601-17.65-47.639-8.66-119.798-6.9-181.025 8.4-73.128 18.27-119.98 61.9-150.831 101.68-8.853 11.42 106.429 75.74 225.062 48.47 15.062-3.47 20.351 2.57 19.394 2.66-206.222 18.53-301.232 93.12-335.884 174.83-3.407 8.03 222.518 75.83 353.977 27.49 75.296-27.69 181.843-114.59 327.088-251.03 8.61-8.09 62.03-26.49 86.99-31.09 384.4-70.91 656.34-378.55 839.01-649.415 38.63-57.284 71.92-114.87 99.52-170.994 115.76-235.467 130.26-446.966 23.65-493.712z" />
+      <path d="m2163.36 782.761c97.22 88.884 316.83 389.039 198.2 423.399-86.78 25.14-306.05-36.69-299.09-245.413" />
+      <path d="m1806.06 540.424c-72.19-41.832-386.48-141.11-420.54-77.268-42.3 79.286 69.81 291.587 296.14 269.958" />
+    </g>
+  </svg>
+);

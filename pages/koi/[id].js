@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { Line } from 'react-chartjs-2';
-import { SRLWrapper } from 'simple-react-lightbox';
+import Lightbox from 'react-image-lightbox';
 import { getKoiById, getAllKoisWithSlug, getAllVarieties } from '../../lib/api';
 import { urlFor } from '../../lib/sanity';
 import { Title, Card, SubTitle } from '../../components/utils/styledComponents';
@@ -12,8 +12,11 @@ import {
   getFormattedDate,
 } from '../../components/utils/ageCalculator';
 
+import 'react-image-lightbox/style.css';
+
 const PictureEvolution = styled.div`
   padding: 0 2rem;
+  margin-top: 1rem;
 `;
 export const ImageContainer = styled.div`
   position: relative;
@@ -70,13 +73,16 @@ const options = {
     },
   },
 };
+const getImages = (koi) => {
+  let images = [];
+  koi.updates.map(({ image }) => (images = [...images, urlFor(image)]));
+  return images;
+};
 
 const DetailPage = ({ koi }) => {
-  const getImages = (koi) => {
-    let images = [];
-    koi.updates.map(({ image }) => (images = [...images, urlFor(image)]));
-    return images;
-  };
+  const [visible, setVisible] = useState(false);
+  const [photoIndex, setPhotoIndex] = useState(0);
+
   const getData = (koi) => {
     let data = [];
     koi.updates.map(
@@ -103,8 +109,10 @@ const DetailPage = ({ koi }) => {
       },
     ],
   };
+  const images = koi && getImages(koi);
+
   return koi ? (
-    <SRLWrapper elements={getImages(koi)}>
+    <>
       <Title>
         {koi.breeder} {koi.bloodline} {koi.variety}
       </Title>
@@ -113,20 +121,26 @@ const DetailPage = ({ koi }) => {
           <SubTitle>Picture evolution</SubTitle>
           <div className="cp-c-row cp-c-align-center-center">
             {koi.updates.map(({ length, date, image }, index) => (
-              <div className="cp-i-15" key={index}>
-                <ImageContainer>
-                  <Image
-                    src={urlFor(image)}
-                    layout="fill"
-                    objectFit="contain"
-                    alt="age"
-                    priority
-                  />
-                </ImageContainer>
-                <Date>{getFormattedDate(date)}</Date>
-                <div className="cp-c-row cp-c-align-center-center">
-                  <Size>{length}cm</Size>
-                  <Age>{getCurrentAgeText(koi.birthDate)}</Age>
+              <div
+                className="cp-i-15"
+                key={index}
+                onClick={() => setPhotoIndex(index)}
+              >
+                <div onClick={() => setVisible(true)}>
+                  <ImageContainer>
+                    <Image
+                      src={urlFor(image)}
+                      layout="fill"
+                      objectFit="contain"
+                      alt="age"
+                      priority
+                    />
+                  </ImageContainer>
+                  <Date>{getFormattedDate(date)}</Date>
+                  <div className="cp-c-row cp-c-align-center-center">
+                    <Size>{length}cm</Size>
+                    <Age>{getCurrentAgeText(koi.birthDate)}</Age>
+                  </div>
                 </div>
               </div>
             ))}
@@ -154,8 +168,22 @@ const DetailPage = ({ koi }) => {
             <Line data={data} width={null} height={null} options={options} />
           </Card>
         </div>
+        {visible && (
+          <Lightbox
+            mainSrc={images[photoIndex]}
+            nextSrc={images[(photoIndex + 1) % images.length]}
+            prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+            onCloseRequest={() => setVisible(false)}
+            onMovePrevRequest={() =>
+              setPhotoIndex((photoIndex + images.length - 1) % images.length)
+            }
+            onMoveNextRequest={() =>
+              setPhotoIndex((photoIndex + 1) % images.length)
+            }
+          />
+        )}
       </div>
-    </SRLWrapper>
+    </>
   ) : (
     <div />
   );
@@ -165,12 +193,10 @@ export default DetailPage;
 
 export async function getStaticProps({ params, preview = false }) {
   const koi = await getKoiById(params.id, preview);
-  const variety = await getAllVarieties();
   return {
     props: {
       preview,
       koi,
-      variety,
     },
     revalidate: 1,
   };
