@@ -83,7 +83,6 @@ export const SubTitle = styled.div`
 `;
 
 export const Card = styled.div`
-  overflow: hidden;
   transition: all 0.2s;
   width: 100%;
   padding: ${(props) => (props.padding ? props.padding : '1rem')};
