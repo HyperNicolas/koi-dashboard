@@ -23,6 +23,10 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
           <link
             rel="stylesheet"
             href="https://unpkg.com/hyperplan@latest/dist/hyperplan.min.css"
@@ -32,6 +36,7 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
           {/* Step 5: Output the styles in the head  */}
+          <title>KoiPortal</title>
           {this.props.styleTags}
         </Head>
         <body>

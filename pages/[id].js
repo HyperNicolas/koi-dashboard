@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { Title, slugify, media } from '../components/utils/styledComponents';
 import { getAllVarietyKoi, getAllVarieties } from '../lib/api';
 import VerticalCard from '../components/card/VerticalCard';
@@ -31,6 +32,7 @@ const StyledTitle = styled(Title)`
 const VarietyPage = ({ kois }) => {
   return kois && kois[0] ? (
     <section>
+      <Breadcrumbs links={[]} currentBreadcrumbText={kois[0].variety} />
       <StyledTitle>All your {kois[0].variety}s</StyledTitle>
       <div className="cp-c-row cp-c-align-start-start cp-c-padding-1 cp-c-md-padding-2 cp-c-lg-padding-3 cp-c-wrap">
         <VerticalCard kois={kois} />

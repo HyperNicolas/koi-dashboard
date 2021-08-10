@@ -53,6 +53,10 @@ export const useWindowSize = () => {
   }, []);
   return width;
 };
+export const iconCss = css`
+  font-size: 1rem;
+  line-height: 1rem;
+`;
 
 export const Title = styled.div`
   padding: 1.5rem 1rem;

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { Line } from 'react-chartjs-2';
 import Lightbox from 'react-image-lightbox';
+import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import { getKoiById, getAllKoisWithSlug } from '../../lib/api';
 import { urlFor } from '../../lib/sanity';
 import {
@@ -10,6 +11,7 @@ import {
   Card,
   SubTitle,
   media,
+  slugify,
 } from '../../components/utils/styledComponents';
 import {
   getAgeDifferenceDate,
@@ -69,6 +71,7 @@ const StyledReactPlayer = styled.iframe`
   left: 0;
   border: 0;
   z-index: 2;
+  border-radius: 10px;
 `;
 const ImagesContainer = styled.div`
   overflow-x: auto;
@@ -138,6 +141,12 @@ const DetailPage = ({ koi }) => {
 
   return koi ? (
     <>
+      <Breadcrumbs
+        links={[{ to: `/${slugify(koi.variety)}`, text: koi.variety }]}
+        currentBreadcrumbText={`${koi.breeder} ${
+          koi.bloodline ? koi.bloodline : ''
+        } ${koi.variety}`}
+      />
       <Title>
         {koi.breeder} {koi.bloodline} {koi.variety}
       </Title>
