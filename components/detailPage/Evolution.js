@@ -13,7 +13,7 @@ import {
 
 import 'react-image-lightbox/style.css';
 
-const PictureEvolution = styled.div`
+export const CardContainer = styled.div`
   padding: 0 0.5rem;
   margin-top: 1rem;
 
@@ -70,7 +70,7 @@ const ImagesContainer = styled.div`
   overflow-y: hidden;
   white-space: nowrap;
 `;
-const Test = styled.div`
+const CardStyle = styled.div`
   display: inline-block !important;
   min-width: 150px;
 
@@ -132,13 +132,13 @@ const Evolution = ({ koi }) => {
 
   return (
     <>
-      <PictureEvolution>
+      <CardContainer>
         <Card>
           <SubTitle>Picture evolution</SubTitle>
           <ImagesContainer>
             <div className="cp-c-row cp-c-align-start-start cp-c-md-align-center-center">
               {koi.updates.map(({ length, date, image }, index) => (
-                <Test
+                <CardStyle
                   className="cp-i-33 cp-i-md-25 cp-i-lg-20 cp-i-xl-15"
                   key={index}
                   onClick={() => setPhotoIndex(index)}
@@ -159,12 +159,12 @@ const Evolution = ({ koi }) => {
                       <Age>{getCurrentAgeText(koi.birthDate)}</Age>
                     </div>
                   </div>
-                </Test>
+                </CardStyle>
               ))}
             </div>
           </ImagesContainer>
         </Card>
-      </PictureEvolution>
+      </CardContainer>
       <div className="cp-c-row cp-c-padding-1 cp-c-md-padding-2 cp-c-lg-padding-3 cp-c-wrap">
         <div className="cp-i-100 cp-i-md-50">
           <Card padding="0">

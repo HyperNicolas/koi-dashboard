@@ -5,7 +5,7 @@ import { AiOutlineDown } from 'react-icons/ai';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import { getKoiById, getAllKoisWithSlug } from '../../lib/api';
 import { Title, slugify, media } from '../../components/utils/styledComponents';
-
+import History from '../../components/detailPage/History';
 import Evolution from '../../components/detailPage/Evolution';
 
 const PopoverContainer = styled.div`
@@ -28,8 +28,13 @@ const Filter = styled.span`
   padding: 1rem;
   box-shadow: 10px 11px 40px rgba(20, 61, 123, 0.05);
   border-radius: 5px;
-  ${media.md} {
+  min-width: 3rem;
+
+  ${media.sm} {
     color: ${(props) => props.theme.mainColor};
+  }
+  ${media.md} {
+    padding-left: 1.5rem;
   }
 `;
 const StyledPopover = styled(Popover)`
@@ -59,8 +64,21 @@ const FilterOption = styled.div`
   }
 `;
 export const StyledIcon = styled(AiOutlineDown)`
-  margin: 0 0.3rem;
   font-size: 1rem;
+
+  ${media.sm} {
+    margin: 0 0.3em;
+  }
+`;
+const TitleContainer = styled.div`
+  padding-bottom: 1rem;
+
+  ${media.lg} {
+    padding-bottom: ${(props) => props.history && '0'};
+  }
+`;
+const StyledTitle = styled(Title)`
+  padding-bottom: 0;
 `;
 
 const filterOptions = [{ title: 'Evolution' }, { title: 'History' }];
@@ -76,10 +94,13 @@ const DetailPage = ({ koi }) => {
           koi.bloodline ? koi.bloodline : ''
         } ${koi.variety}`}
       />
-      <div className="cp-c-row cp-c-align-spacebetween-end">
-        <Title>
+      <TitleContainer
+        history={dropdown == 'History'}
+        className="cp-c-row cp-c-align-spacebetween-end cp-c-lg-align-spacebetween-center"
+      >
+        <StyledTitle>
           {koi.breeder} {koi.bloodline} {koi.variety}
-        </Title>
+        </StyledTitle>
         <PopoverContainer onClick={() => setVisible(!visible)}>
           <StyledPopover
             isOpen={visible}
@@ -103,9 +124,13 @@ const DetailPage = ({ koi }) => {
             </Filter>
           </StyledPopover>
         </PopoverContainer>
-      </div>
+      </TitleContainer>
 
-      {dropdown == 'Evolution' ? <Evolution koi={koi} /> : <div>test</div>}
+      {dropdown == 'Evolution' ? (
+        <Evolution koi={koi} />
+      ) : (
+        <History koi={koi} />
+      )}
     </>
   ) : (
     <div />
