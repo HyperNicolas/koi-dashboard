@@ -59,7 +59,7 @@ export const Title = styled.div`
   font-size: 1.5rem;
   line-height: 1.5rem;
   color: ${(props) => props.theme.mainColor};
-  padding-bottom: 0;
+  padding-bottom: 0.5rem;
 
   ${media.lg} {
     padding-bottom: 1rem;

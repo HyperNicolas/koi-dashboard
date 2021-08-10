@@ -1,9 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import Image from 'next/image';
 import Link from 'next/link';
 import { getAllKoi } from '../lib/api';
-import { Title, slugify, Card } from '../components/utils/styledComponents';
+import {
+  Title,
+  slugify,
+  Card,
+  media,
+} from '../components/utils/styledComponents';
 
 const getKois = (kois) => {
   let varieties = [];
@@ -16,7 +20,9 @@ const Text = styled.div`
   color: ${(props) => props.theme.mainColor};
 `;
 const StyledTitle = styled(Title)`
-  padding-bottom: 0;
+  ${media.md} {
+    padding-bottom: 0;
+  }
 `;
 const StyledCard = styled(Card)`
   height: 15rem;
@@ -31,7 +37,7 @@ const Home = ({ kois }) => {
   return kois ? (
     <>
       <StyledTitle>All varieties</StyledTitle>
-      <div className="cp-c-padding-3 cp-c-row cp-c-wrap">
+      <div className="cp-c-padding-1 cp-c-md-padding-2 cp-c-lg-padding-3  cp-c-row cp-c-wrap">
         {varieties.map((variety) => (
           <div
             className="cp-i-100 cp-i-sm-50 cp-i-md-33 cp-i-lg-25 cp-i-xl-20"

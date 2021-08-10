@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Title, slugify } from '../components/utils/styledComponents';
+import { Title, slugify, media } from '../components/utils/styledComponents';
 import { getAllVarietyKoi, getAllVarieties } from '../lib/api';
 import VerticalCard from '../components/card/VerticalCard';
 
@@ -23,14 +23,16 @@ const types = {
 };
 
 const StyledTitle = styled(Title)`
-  padding-bottom: 0;
+  ${media.md} {
+    padding-bottom: 0;
+  }
 `;
 
 const VarietyPage = ({ kois }) => {
   return kois && kois[0] ? (
     <section>
       <StyledTitle>All your {kois[0].variety}s</StyledTitle>
-      <div className="cp-c-row cp-c-align-start-start cp-c-padding-3 cp-c-wrap">
+      <div className="cp-c-row cp-c-align-start-start cp-c-padding-1 cp-c-md-padding-2 cp-c-lg-padding-3 cp-c-wrap">
         <VerticalCard kois={kois} />
       </div>
     </section>
