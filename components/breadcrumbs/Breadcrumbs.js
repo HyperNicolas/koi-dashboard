@@ -19,8 +19,12 @@ const Container = styled.div`
   padding-bottom: 0;
 
   ${media.md} {
-    padding-bottom: 0;
+    padding-left: 1.5rem;
     padding-top: 1.5rem;
+    padding-bottom: 0;
+  }
+  ${media.lg} {
+    padding-left: 2rem;
   }
 `;
 const LastBreadcrumb = styled.span`
