@@ -35,7 +35,9 @@ const StyledKoiIcon = styled.svg`
 `;
 
 const Container = styled.section`
-  height: 100vh;
+  position: relative;
+  display: block !important;
+  min-height: 100vh;
   background: linear-gradient(
     125.83deg,
     #fafbff 10%,

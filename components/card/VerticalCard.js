@@ -21,7 +21,7 @@ const CardText = styled.div`
 const VerticalCard = ({ kois }) =>
   kois.map(({ id, updates, bloodline, breeder }) => (
     <div
-      className="cp-i-100 cp-i-sm-50 cp-i-md-25 cp-i-lg-20 cp-i-xl-15"
+      className="cp-i-50 cp-i-sm-33 cp-i-md-25 cp-i-lg-20 cp-i-xl-15"
       key={id}
     >
       <Link href={`/koi/${id}`}>

@@ -55,16 +55,31 @@ export const useWindowSize = () => {
 };
 
 export const Title = styled.div`
-  padding: 2rem;
-  font-size: 2rem;
+  padding: 1rem;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
   color: ${(props) => props.theme.mainColor};
-  padding-bottom: 1rem;
+  padding-bottom: 0;
+
+  ${media.lg} {
+    padding-bottom: 1rem;
+    padding: 2rem;
+    font-size: 2rem;
+    line-height: 2rem;
+  }
 `;
 export const SubTitle = styled.div`
-  padding: 1rem;
+  padding: 0.5rem;
   padding-bottom: 0;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
   color: ${(props) => props.theme.mainColor};
+
+  ${media.lg} {
+    padding: 1rem;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
 `;
 
 export const Card = styled.div`

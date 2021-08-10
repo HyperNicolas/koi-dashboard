@@ -3,9 +3,14 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { Line } from 'react-chartjs-2';
 import Lightbox from 'react-image-lightbox';
-import { getKoiById, getAllKoisWithSlug, getAllVarieties } from '../../lib/api';
+import { getKoiById, getAllKoisWithSlug } from '../../lib/api';
 import { urlFor } from '../../lib/sanity';
-import { Title, Card, SubTitle } from '../../components/utils/styledComponents';
+import {
+  Title,
+  Card,
+  SubTitle,
+  media,
+} from '../../components/utils/styledComponents';
 import {
   getAgeDifferenceDate,
   getCurrentAgeText,
@@ -15,8 +20,15 @@ import {
 import 'react-image-lightbox/style.css';
 
 const PictureEvolution = styled.div`
-  padding: 0 2rem;
+  padding: 0 0.5rem;
   margin-top: 1rem;
+
+  ${media.md} {
+    padding: 0 1rem;
+  }
+  ${media.lg} {
+    padding: 0 2rem;
+  } ;
 `;
 export const ImageContainer = styled.div`
   position: relative;
@@ -57,6 +69,14 @@ const StyledReactPlayer = styled.iframe`
   left: 0;
   border: 0;
   z-index: 2;
+`;
+const ImagesContainer = styled.div`
+  overflow: auto;
+  white-space: nowrap;
+`;
+const Test = styled.div`
+  display: inline-block !important;
+  min-width: 150px;
 `;
 
 const options = {
@@ -119,36 +139,37 @@ const DetailPage = ({ koi }) => {
       <PictureEvolution>
         <Card>
           <SubTitle>Picture evolution</SubTitle>
-          <div className="cp-c-row cp-c-align-center-center">
-            {koi.updates.map(({ length, date, image }, index) => (
-              <div
-                className="cp-i-15"
-                key={index}
-                onClick={() => setPhotoIndex(index)}
-              >
-                <div onClick={() => setVisible(true)}>
-                  <ImageContainer>
-                    <Image
-                      src={urlFor(image)}
-                      layout="fill"
-                      objectFit="contain"
-                      alt="age"
-                      priority
-                    />
-                  </ImageContainer>
-                  <Date>{getFormattedDate(date)}</Date>
-                  <div className="cp-c-row cp-c-align-center-center">
-                    <Size>{length}cm</Size>
-                    <Age>{getCurrentAgeText(koi.birthDate)}</Age>
+          <ImagesContainer>
+            <div className="cp-c-row cp-c-align-start-start cp-c-md-align-center-center">
+              {koi.updates.map(({ length, date, image }, index) => (
+                <Test
+                  className="cp-i-100 cp-i-md-25 cp-i-lg-20 cp-i-xl-15"
+                  key={index}
+                  onClick={() => setPhotoIndex(index)}
+                >
+                  <div onClick={() => setVisible(true)}>
+                    <ImageContainer>
+                      <Image
+                        src={urlFor(image)}
+                        layout="fill"
+                        objectFit="contain"
+                        alt="age"
+                        priority
+                      />
+                    </ImageContainer>
+                    <Date>{getFormattedDate(date)}</Date>
+                    <div className="cp-c-row cp-c-align-center-center">
+                      <Size>{length}cm</Size>
+                      <Age>{getCurrentAgeText(koi.birthDate)}</Age>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
+                </Test>
+              ))}
+            </div>
+          </ImagesContainer>
         </Card>
       </PictureEvolution>
-
-      <div className="cp-c-row cp-c-padding-3">
+      <div className="cp-c-row cp-c-padding-1 cp-c-md-padding-2 cp-c-padding-lg-3 cp-c-wrap">
         <div className="cp-i-100 cp-i-md-50">
           <Card padding="0">
             <IframeContainer>
@@ -168,21 +189,22 @@ const DetailPage = ({ koi }) => {
             <Line data={data} width={null} height={null} options={options} />
           </Card>
         </div>
-        {visible && (
-          <Lightbox
-            mainSrc={images[photoIndex]}
-            nextSrc={images[(photoIndex + 1) % images.length]}
-            prevSrc={images[(photoIndex + images.length - 1) % images.length]}
-            onCloseRequest={() => setVisible(false)}
-            onMovePrevRequest={() =>
-              setPhotoIndex((photoIndex + images.length - 1) % images.length)
-            }
-            onMoveNextRequest={() =>
-              setPhotoIndex((photoIndex + 1) % images.length)
-            }
-          />
-        )}
       </div>
+
+      {visible && (
+        <Lightbox
+          mainSrc={images[photoIndex]}
+          nextSrc={images[(photoIndex + 1) % images.length]}
+          prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+          onCloseRequest={() => setVisible(false)}
+          onMovePrevRequest={() =>
+            setPhotoIndex((photoIndex + images.length - 1) % images.length)
+          }
+          onMoveNextRequest={() =>
+            setPhotoIndex((photoIndex + 1) % images.length)
+          }
+        />
+      )}
     </>
   ) : (
     <div />
