@@ -71,12 +71,17 @@ const StyledReactPlayer = styled.iframe`
   z-index: 2;
 `;
 const ImagesContainer = styled.div`
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   white-space: nowrap;
 `;
 const Test = styled.div`
   display: inline-block !important;
   min-width: 150px;
+
+  ${media.xxl} {
+    max-width: 12% !important;
+  }
 `;
 
 const options = {
@@ -169,7 +174,7 @@ const DetailPage = ({ koi }) => {
           </ImagesContainer>
         </Card>
       </PictureEvolution>
-      <div className="cp-c-row cp-c-padding-1 cp-c-md-padding-2 cp-c-padding-lg-3 cp-c-wrap">
+      <div className="cp-c-row cp-c-padding-1 cp-c-md-padding-2 cp-c-lg-padding-3 cp-c-wrap">
         <div className="cp-i-100 cp-i-md-50">
           <Card padding="0">
             <IframeContainer>
