@@ -7,8 +7,8 @@ import { KoiSVG } from '../utils/styledComponents';
 const KoiIcon = (props) => <KoiSVG {...props} />;
 
 const StyledKoiIcon = styled.svg`
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 2rem;
+  height: 2rem;
   stroke-width: 130px;
   stroke: ${(props) =>
     props.active == 'true' ? props.theme.mainColor : props.theme.textColor};
@@ -17,13 +17,13 @@ const StyledKoiIcon = styled.svg`
   }
 `;
 const LinkContainer = styled.div`
-  padding: 1.2rem;
+  padding: 1.5rem;
   border-left: 1px solid #e8e8e8;
   color: ${(props) =>
     props.active == 'true' ? props.theme.mainColor : props.theme.textColor};
 `;
 const IconContainer = styled.div`
-  font-size: 1.8rem;
+  font-size: 2rem;
 `;
 
 const Container = styled.section`
