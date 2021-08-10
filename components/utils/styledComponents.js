@@ -62,10 +62,10 @@ export const Title = styled.div`
   padding-bottom: 0.5rem;
 
   ${media.lg} {
-    padding-bottom: 1rem;
     padding: 2rem;
     font-size: 2rem;
     line-height: 2rem;
+    padding-bottom: 1rem;
   }
 `;
 export const SubTitle = styled.div`

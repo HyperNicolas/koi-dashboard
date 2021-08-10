@@ -36,6 +36,17 @@ const Content = styled.div`
     padding-bottom: 0;
   }
 `;
+const MobileContainer = styled.div`
+  ${media.sm} {
+    display: none;
+  }
+`;
+const DesktopContainer = styled.div`
+  display: none;
+  ${media.sm} {
+    display: block;
+  }
+`;
 
 const LayoutContainer = (props) => {
   const [collapsed, setCollapsed] = useState(true);
@@ -48,20 +59,24 @@ const LayoutContainer = (props) => {
     document.getElementById('menu') &&
       setMenuWidth(document.getElementById('menu').offsetWidth);
   }, [collapsed]);
+  useEffect(() => {
+    document.getElementById('menu') &&
+      setMenuWidth(document.getElementById('menu').offsetWidth);
+  }, [width]);
 
   return (
     <Container className="cp-c-row">
-      {isMobile ? (
+      <MobileContainer>
         <MobileNavigation links={links} />
-      ) : (
+      </MobileContainer>
+      <DesktopContainer>
         <DesktopNavigation
           id="menu"
           links={links}
           collapsed={collapsed}
           setCollapsed={setCollapsed}
         />
-      )}
-
+      </DesktopContainer>
       <Content className="cp-i-flex" paddingLeft={menuWidth}>
         {props.children}
       </Content>
