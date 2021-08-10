@@ -55,7 +55,7 @@ export const useWindowSize = () => {
 };
 
 export const Title = styled.div`
-  padding: 1rem;
+  padding: 1.5rem 1rem;
   font-size: 1.5rem;
   line-height: 1.5rem;
   color: ${(props) => props.theme.mainColor};

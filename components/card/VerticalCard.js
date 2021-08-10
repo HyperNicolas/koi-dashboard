@@ -12,6 +12,7 @@ const StyledCard = styled(Card)`
   }
 `;
 const CardText = styled.div`
+  height: 2.5rem;
   padding-top: 0.5rem;
   line-height: 1.1rem;
   text-align: center;
