@@ -23,6 +23,27 @@ export const getCurrentAgeText = (birthDate, age) => {
     return 'Rokusai +';
   }
 };
+
+export const getCurrentAgeTextCard = (birthDate, age) => {
+  const newBirthDate = parse(birthDate, 'yyyy-MM-dd', new Date());
+  const ageInMonths = age
+    ? age
+    : differenceInCalendarMonths(new Date(), newBirthDate);
+  if (ageInMonths < 15) {
+    return 'Tosai';
+  } else if (ageInMonths < 27) {
+    return 'Nisai';
+  } else if (ageInMonths < 39) {
+    return 'Sansai';
+  } else if (ageInMonths < 51) {
+    return 'Yonsai';
+  } else if (ageInMonths < 63) {
+    return 'Gosai';
+  } else if (63 <= ageInMonths) {
+    return 'Rokusai +';
+  }
+};
+
 export const getFormattedDate = (date) => {
   const newDate = parse(date, 'yyyy-MM-dd', new Date());
   return format(newDate, 'dd/MM/yyyy');

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Card } from '../utils/styledComponents';
 import { urlFor } from '../../lib/sanity';
 import { ImageContainer } from '../../components/detailPage/Evolution';
+import { getCurrentAgeTextCard } from '../utils/ageCalculator';
 
 const StyledCard = styled(Card)`
   :hover {
@@ -20,7 +21,7 @@ const CardText = styled.div`
 `;
 
 const VerticalCard = ({ kois }) =>
-  kois.map(({ id, updates, bloodline, breeder }) => (
+  kois.map(({ id, sex, updates, bloodline, birthDate, breeder }) => (
     <div
       className="cp-i-50 cp-i-sm-33 cp-i-md-25 cp-i-lg-20 cp-i-xl-15"
       key={id}
@@ -39,8 +40,8 @@ const VerticalCard = ({ kois }) =>
                 />
               </ImageContainer>
               <CardText>
-                <div>{breeder}</div>
-                <div>{bloodline}</div>
+                <div>{`${getCurrentAgeTextCard(birthDate)} ${breeder}`}</div>
+                <div>{`${bloodline ? bloodline : ''} ${sex}`}</div>
               </CardText>
             </div>
           </StyledCard>
