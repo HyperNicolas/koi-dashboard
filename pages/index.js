@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import Image from 'next/image';
 import { getAllKoi } from '../lib/api';
 import {
   Title,
@@ -9,8 +8,6 @@ import {
   Card,
   media,
 } from '../components/utils/styledComponents';
-import showa from '../public/showaD.svg';
-import sanke from '../public/sankeD.svg';
 
 const getKois = (kois) => {
   let varieties = [];
