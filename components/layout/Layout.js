@@ -29,7 +29,7 @@ const Container = styled.section`
   ) !important;
 `;
 const Content = styled.div`
-  padding-bottom: 6rem;
+  padding-bottom: 7rem;
 
   ${media.sm} {
     padding-left: ${(props) => props.paddingLeft}px;
