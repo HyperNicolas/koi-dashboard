@@ -4,7 +4,12 @@ import styled from 'styled-components';
 import { AiOutlineDown } from 'react-icons/ai';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import { getKoiById, getAllKoisWithSlug } from '../../lib/api';
-import { Title, slugify, media } from '../../components/utils/styledComponents';
+import {
+  Title,
+  slugify,
+  media,
+  useWindowSize,
+} from '../../components/utils/styledComponents';
 import History from '../../components/detailPage/History';
 import Evolution from '../../components/detailPage/Evolution';
 
@@ -41,10 +46,19 @@ const Filter = styled.span`
 const StyledPopover = styled(Popover)`
   line-height: 1rem;
 `;
-const ContainerSyle = {
+const ContainerStyleDesktop = {
   background: '#fff',
   boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
   zIndex: '101',
+};
+const ContainerStyleMobile = {
+  left: '0.25rem',
+  right: '0.25rem',
+  borderRadius: '10px',
+  background: '#fff',
+  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
+  zIndex: '101',
+  width: '97%',
 };
 const FilterOption = styled.div`
   text-align: center;
@@ -86,6 +100,9 @@ const filterOptions = [{ title: 'Evolution' }, { title: 'History' }];
 const DetailPage = ({ koi }) => {
   const [visible, setVisible] = useState(false);
   const [dropdown, setDropdown] = useState('Evolution');
+  const width = useWindowSize();
+  const isMobile = width < 568;
+
   return koi ? (
     <>
       <Breadcrumbs
@@ -110,7 +127,9 @@ const DetailPage = ({ koi }) => {
             onClickOutside={() => setVisible(false)}
             position="bottom"
             align="end"
-            containerStyle={ContainerSyle}
+            containerStyle={
+              isMobile ? ContainerStyleMobile : ContainerStyleDesktop
+            }
             content={filterOptions.map(({ title }) => (
               <FilterOption
                 key={title}
