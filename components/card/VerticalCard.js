@@ -8,6 +8,8 @@ import { ImageContainer } from '../../components/detailPage/Evolution';
 import { getCurrentAgeTextCard } from '../utils/ageCalculator';
 
 const StyledCard = styled(Card)`
+  padding: 0.5rem;
+  padding-bottom: 1rem;
   :hover {
     box-shadow: ${(props) => props.theme.boxShadowHover};
   }
