@@ -155,7 +155,7 @@ const Evolution = ({ koi }) => {
                     <Date>{getFormattedDate(date)}</Date>
                     <div className="cp-c-row cp-c-align-center-center">
                       <Size>{length}cm</Size>
-                      <Age>{getCurrentAgeText(koi.birthDate)}</Age>
+                      <Age>{getCurrentAgeText(koi.birthDate, date)}</Age>
                     </div>
                   </div>
                 </CardStyle>

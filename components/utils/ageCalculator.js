@@ -7,20 +7,19 @@ import {
 
 export const getCurrentAgeText = (birthDate, age) => {
   const newBirthDate = parse(birthDate, 'yyyy-MM-dd', new Date());
-  const ageInMonths = age
-    ? age
-    : differenceInCalendarMonths(new Date(), newBirthDate);
-  if (ageInMonths < 15) {
+  const newDate = parse(age, 'yyyy-MM-dd', new Date());
+  const newAge = differenceInMonths(newDate, newBirthDate);
+  if (newAge < 15) {
     return 'Tosai';
-  } else if (ageInMonths < 27) {
+  } else if (newAge < 27) {
     return 'Nisai';
-  } else if (ageInMonths < 39) {
+  } else if (newAge < 39) {
     return 'Sansai';
-  } else if (ageInMonths < 51) {
+  } else if (newAge < 51) {
     return 'Yonsai';
-  } else if (ageInMonths < 63) {
+  } else if (newAge < 63) {
     return 'Gosai';
-  } else if (63 <= ageInMonths) {
+  } else if (63 <= newAge) {
     return 'Rokusai +';
   }
 };

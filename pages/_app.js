@@ -5,11 +5,13 @@ import '../styles/globals.css';
 import '../styles/vars.css';
 
 const MyApp = ({ Component, pageProps }) => (
-  <ThemeProvider theme={theme}>
-    <Layout {...pageProps}>
-      <Component {...pageProps} />
-    </Layout>
-  </ThemeProvider>
+  <>
+    <ThemeProvider theme={theme}>
+      <Layout {...pageProps}>
+        <Component {...pageProps} />
+      </Layout>
+    </ThemeProvider>
+  </>
 );
 
 export default MyApp;
