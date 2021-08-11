@@ -51,9 +51,7 @@ const DesktopContainer = styled.div`
 const LayoutContainer = (props) => {
   const [collapsed, setCollapsed] = useState(true);
   const [menuWidth, setMenuWidth] = useState('68');
-  const router = useRouter();
   const width = useWindowSize();
-  const isMobile = width < 768;
 
   useEffect(() => {
     document.getElementById('menu') &&

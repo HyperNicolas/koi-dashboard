@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getAllKoi } from '../lib/api';
 import {
   Title,
@@ -8,6 +9,8 @@ import {
   Card,
   media,
 } from '../components/utils/styledComponents';
+import showa from '../public/showaD.svg';
+import sanke from '../public/sankeD.svg';
 
 const getKois = (kois) => {
   let varieties = [];
@@ -16,16 +19,24 @@ const getKois = (kois) => {
 };
 
 const Text = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  text-align: center;
   font-size: 1.5rem;
   color: ${(props) => props.theme.mainColor};
 `;
+
 const StyledTitle = styled(Title)`
   ${media.md} {
     padding-bottom: 0;
   }
 `;
 const StyledCard = styled(Card)`
-  height: 15rem;
+  position: relative;
+  overflow: hidden;
+  padding-top: 65%;
   :hover {
     box-shadow: ${(props) => props.theme.boxShadowHover};
   }
