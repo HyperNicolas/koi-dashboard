@@ -14,7 +14,7 @@ const PopoverContainer = styled.div`
 
   ${media.md} {
     padding-right: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
   ${media.lg} {
     padding-right: 2rem;

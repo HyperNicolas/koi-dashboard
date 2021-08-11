@@ -28,6 +28,10 @@ export const getFormattedDate = (date) => {
   const newDate = parse(date, 'yyyy-MM-dd', new Date());
   return format(newDate, 'dd/MM/yyyy');
 };
+export const getHistoryFormattedDate = (date) => {
+  const newDate = parse(date, 'yyyy-MM-dd', new Date());
+  return format(newDate, 'do MMMM yyyy');
+};
 
 export const getAgeDifferenceDate = (birthDate, date) => {
   const newBirthDate = parse(birthDate, 'yyyy-MM-dd', new Date());

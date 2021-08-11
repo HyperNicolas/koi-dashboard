@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 
 export const theme = {
   textColor: '#565656',
-  textColorLight: '#afafaf',
+  textColorLight: '#949494',
   textColorDark: '#404040',
   mainColor: '#3A3878',
   mainColorHighlight: '#0C4184',
