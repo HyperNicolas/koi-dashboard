@@ -16,12 +16,10 @@ const Container = styled.div`
   font-size: 0.9rem;
   padding: 1rem;
   color: rgba(0, 0, 0, 0.45);
-  padding-bottom: 0;
 
   ${media.md} {
     padding-left: 1.5rem;
     padding-top: 1.5rem;
-    padding-bottom: 0;
   }
   ${media.lg} {
     padding-left: 2rem;

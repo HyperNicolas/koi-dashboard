@@ -13,6 +13,9 @@ import { Card, SubTitle } from '../utils/styledComponents';
 
 import 'antd/dist/antd.css';
 
+const Container = styled.div`
+  padding-top: 0 !important;
+`;
 const ImageContainer = styled.div`
   position: relative;
   height: 9rem;
@@ -34,6 +37,7 @@ const Divider = styled.div`
 
 const TimeLineContainer = styled.div`
   padding: 1rem;
+  padding-top: 1.5rem;
 
   & > .antd & .ant-timeline-item-head-blue {
     color: ${(props) => props.theme.mainColor};
@@ -78,7 +82,7 @@ const History = ({ koi }) => {
   }, []);
   return (
     <>
-      <div className="cp-c-padding-1 cp-c-md-padding-2 cp-c-lg-padding-3 cp-c-row cp-c-wrap">
+      <Container className="cp-c-padding-1 cp-c-md-padding-2 cp-c-lg-padding-3 cp-c-row cp-c-wrap">
         <div className="cp-i-100 cp-i-md-60">
           <Card>
             <SubTitle>Overview</SubTitle>
@@ -160,7 +164,7 @@ const History = ({ koi }) => {
             </TimeLineContainer>
           </Card>
         </div>
-      </div>
+      </Container>
     </>
   );
 };

@@ -23,7 +23,8 @@ const types = {
   'yamabuki-ogon': 'eca1f98d-a23f-4334-a9f0-b2349d288d2a',
 };
 
-const StyledTitle = styled(Title)`
+export const StyledTitle = styled(Title)`
+  padding-top: 0;
   ${media.md} {
     padding-bottom: 0;
   }

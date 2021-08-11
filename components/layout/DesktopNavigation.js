@@ -59,9 +59,12 @@ const CollapseContainer = styled.div`
   }
 `;
 const CollapseIconContainer = styled.div`
+  position: relative;
   width: fit-content;
   margin: auto;
-  padding: 0.5rem;
+  width: ${(props) => props.collapsed && '3rem'};
+  height: ${(props) => props.collapsed && '3rem'};
+  padding: ${(props) => !props.collapsed && '0.5rem'};
   font-size: 1.5rem;
   border: 1px solid #e8e8e8;
   border-radius: 50px;
@@ -74,6 +77,12 @@ const CollapseIconContainer = styled.div`
 `;
 const CollapseText = styled.div`
   font-size: 0.8rem;
+`;
+const CollapsedContainer = styled.div`
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 const DesktopNavigation = ({ links, collapsed, setCollapsed }) => {
@@ -111,9 +120,11 @@ const DesktopNavigation = ({ links, collapsed, setCollapsed }) => {
         ))}
       </div>
       <CollapseContainer onClick={() => setCollapsed(!collapsed)}>
-        <CollapseIconContainer>
+        <CollapseIconContainer collapsed={collapsed}>
           {collapsed ? (
-            <BsArrowBarRight />
+            <CollapsedContainer>
+              <BsArrowBarRight />
+            </CollapsedContainer>
           ) : (
             <div className="cp-c-row cp-c-align-start-center">
               <BsArrowBarLeft /> <CollapseText>Collapse</CollapseText>

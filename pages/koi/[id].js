@@ -9,12 +9,15 @@ import History from '../../components/detailPage/History';
 import Evolution from '../../components/detailPage/Evolution';
 
 const PopoverContainer = styled.div`
-  padding-right: 0.5rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: ${(props) => props.history && '0.25rem'};
 
-  ${media.md} {
-    padding-right: 1rem;
-    font-size: 1.1rem;
+  ${media.sm} {
+    padding-left: 0;
+    padding-top: 0;
+    padding-right: 1.5rem;
   }
   ${media.lg} {
     padding-right: 2rem;
@@ -25,14 +28,12 @@ const PopoverContainer = styled.div`
 `;
 const Filter = styled.span`
   background: #fff;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   box-shadow: 10px 11px 40px rgba(20, 61, 123, 0.05);
-  border-radius: 5px;
+  border-radius: 10px;
   min-width: 3rem;
+  color: ${(props) => props.theme.mainColor};
 
-  ${media.sm} {
-    color: ${(props) => props.theme.mainColor};
-  }
   ${media.md} {
     padding-left: 1.5rem;
   }
@@ -65,20 +66,19 @@ const FilterOption = styled.div`
 `;
 export const StyledIcon = styled(AiOutlineDown)`
   font-size: 1rem;
-
-  ${media.sm} {
-    margin: 0 0.3em;
-  }
+  margin: 0 0.3em;
 `;
 const TitleContainer = styled.div`
-  padding-bottom: 1rem;
-
+  ${media.sm} {
+    padding-bottom: 1rem;
+  }
   ${media.lg} {
     padding-bottom: ${(props) => props.history && '0'};
   }
 `;
 const StyledTitle = styled(Title)`
   padding-bottom: 0;
+  padding-top: 0;
 `;
 
 const filterOptions = [{ title: 'Evolution' }, { title: 'History' }];
@@ -96,12 +96,15 @@ const DetailPage = ({ koi }) => {
       />
       <TitleContainer
         history={dropdown == 'History'}
-        className="cp-c-row cp-c-align-spacebetween-end cp-c-lg-align-spacebetween-center"
+        className="cp-c-sm-row cp-c-align-spacebetween-center cp-c-lg-align-spacebetween-center cp-c-wrap"
       >
         <StyledTitle>
           {koi.breeder} {koi.bloodline} {koi.variety}
         </StyledTitle>
-        <PopoverContainer onClick={() => setVisible(!visible)}>
+        <PopoverContainer
+          history={dropdown == 'History'}
+          onClick={() => setVisible(!visible)}
+        >
           <StyledPopover
             isOpen={visible}
             onClickOutside={() => setVisible(false)}
@@ -118,8 +121,8 @@ const DetailPage = ({ koi }) => {
               </FilterOption>
             ))}
           >
-            <Filter className="cp-c-row cp-c-align-start-center">
-              <span className="cp-hide cp-md-show-block">{dropdown}</span>
+            <Filter className="cp-c-row cp-c-align-spacebetween-center">
+              <span>{dropdown}</span>
               <StyledIcon />
             </Filter>
           </StyledPopover>

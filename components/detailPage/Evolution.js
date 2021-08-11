@@ -15,7 +15,6 @@ import 'react-image-lightbox/style.css';
 
 export const CardContainer = styled.div`
   padding: 0 0.5rem;
-  margin-top: 1rem;
 
   ${media.md} {
     padding: 0 1rem;

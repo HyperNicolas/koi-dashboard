@@ -4,12 +4,7 @@ import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { Title, media } from '../components/utils/styledComponents';
 import { getAllKoi } from '../lib/api';
 import VerticalCard from '../components/card/VerticalCard';
-
-const StyledTitle = styled(Title)`
-  ${media.md} {
-    padding-bottom: 0;
-  }
-`;
+import { StyledTitle } from './[id]';
 
 const VarietyPage = ({ kois }) =>
   kois ? (
