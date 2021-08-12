@@ -59,17 +59,22 @@ export const iconCss = css`
 `;
 
 export const Title = styled.div`
-  padding: 1.5rem 1rem;
+  padding: 1rem;
   font-size: 1.5rem;
-  line-height: 1.5rem;
+  line-height: 2.3rem;
   color: ${(props) => props.theme.mainColor};
-  padding-bottom: 0.5rem;
+  padding-top: 0;
+
+  ${media.md} {
+    padding: 1.5rem;
+    padding-top: 0;
+  }
 
   ${media.lg} {
-    padding: 1.5rem 2rem;
     font-size: 2rem;
-    line-height: 2.5rem;
-    padding-bottom: 1rem;
+    line-height: 3rem;
+    padding: 2rem;
+    padding-top: 0;
   }
 `;
 export const SubTitle = styled.div`

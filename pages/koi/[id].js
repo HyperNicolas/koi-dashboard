@@ -15,12 +15,13 @@ import Evolution from '../../components/detailPage/Evolution';
 
 const PopoverContainer = styled.div`
   font-size: 1.1rem;
-  padding: 0.5rem;
-  padding-top: 1rem;
+  padding: 1rem;
 
   ${media.sm} {
-    padding-left: 0;
-    padding-top: 0;
+    padding: 0;
+    padding-right: 1rem;
+  }
+  ${media.md} {
     padding-right: 1.5rem;
   }
   ${media.lg} {
@@ -36,6 +37,7 @@ const Filter = styled.span`
   box-shadow: 10px 11px 40px rgba(20, 61, 123, 0.05);
   border-radius: 10px;
   min-width: 3rem;
+  font-size: 1rem;
   color: ${(props) => props.theme.mainColor};
 
   ${media.md} {
@@ -82,11 +84,12 @@ export const StyledIcon = styled(AiOutlineDown)`
   margin: 0 0.3em;
 `;
 const TitleContainer = styled.div`
-  ${media.sm} {
-    padding-bottom: 1rem;
+  padding-bottom: ${(props) => (props.history ? '0.75rem' : '1rem')};
+  ${media.md} {
+    padding-bottom: ${(props) => (props.history ? '1rem' : '1.5rem')};
   }
   ${media.lg} {
-    padding-bottom: ${(props) => props.history && '0'};
+    padding-bottom: ${(props) => (props.history ? '1rem' : '2rem')};
   }
 `;
 const StyledTitle = styled(Title)`

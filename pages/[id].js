@@ -25,7 +25,7 @@ const types = {
 
 export const StyledTitle = styled(Title)`
   padding-top: 0;
-  ${media.md} {
+  ${media.sm} {
     padding-bottom: 0;
   }
 `;

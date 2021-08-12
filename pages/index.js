@@ -26,8 +26,14 @@ const Text = styled.div`
 `;
 
 const StyledTitle = styled(Title)`
+  padding-top: 1rem;
+  padding-bottom: 0;
+
   ${media.md} {
-    padding-bottom: 0;
+    padding-top: 1.5rem;
+  }
+  ${media.lg} {
+    padding-top: 2rem;
   }
 `;
 const StyledCard = styled(Card)`
