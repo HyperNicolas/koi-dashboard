@@ -24,7 +24,7 @@ const Container = styled.div`
   }
   ${media.lg} {
     padding: 2rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
   }
 `;
 const LastBreadcrumb = styled.span`

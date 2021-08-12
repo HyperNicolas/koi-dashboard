@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { AiOutlineHome } from 'react-icons/ai';
 import DesktopNavigation from './DesktopNavigation';
 import MobileNavigation from './MobileNavigation';
-import { KoiSVG } from '../utils/styledComponents';
-import { useWindowSize, media } from '../utils/styledComponents';
+import { KoiSVG, useWindowSize, media } from '../utils/styledComponents';
 
 const KoiIcon = (props) => <KoiSVG {...props} />;
 const links = [
@@ -37,6 +35,7 @@ const Content = styled.div`
   }
 `;
 const MobileContainer = styled.div`
+  display: block;
   ${media.sm} {
     display: none;
   }

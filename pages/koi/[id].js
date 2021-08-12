@@ -84,12 +84,12 @@ export const StyledIcon = styled(AiOutlineDown)`
   margin: 0 0.3em;
 `;
 const TitleContainer = styled.div`
-  padding-bottom: ${(props) => (props.history ? '0.75rem' : '1rem')};
+  padding-bottom: ${(props) => (props.history ? '0.25rem' : '0.75rem')};
   ${media.md} {
-    padding-bottom: ${(props) => (props.history ? '1rem' : '1.5rem')};
+    padding-bottom: ${(props) => (props.history ? '0.5rem' : '1rem')};
   }
   ${media.lg} {
-    padding-bottom: ${(props) => (props.history ? '1rem' : '2rem')};
+    padding-bottom: ${(props) => (props.history ? '0.5rem' : '1.5rem')};
   }
 `;
 const StyledTitle = styled(Title)`

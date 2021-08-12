@@ -35,7 +35,7 @@ const VarietyPage = ({ kois }) => {
     <section>
       <Breadcrumbs links={[]} currentBreadcrumbText={kois[0].variety} />
       <StyledTitle>All your {kois[0].variety}s</StyledTitle>
-      <div className="cp-c-row cp-c-align-start-start cp-c-padding-1 cp-c-md-padding-2 cp-c-lg-padding-3 cp-c-wrap">
+      <div className="cp-c-row cp-c-align-start-start cp-c-padding-2 cp-c-lg-padding-3 cp-c-wrap">
         <VerticalCard kois={kois} />
       </div>
     </section>

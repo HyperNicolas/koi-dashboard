@@ -13,9 +13,6 @@ const StyledKoiIcon = styled.svg`
   stroke-width: 130px;
   stroke: ${(props) =>
     props.active == 'true' ? props.theme.mainColor : props.theme.textColor};
-
-  :hover {
-  }
 `;
 const LinkContainer = styled.div`
   padding: 1.5rem;

@@ -51,7 +51,7 @@ const Home = ({ kois }) => {
   return kois ? (
     <>
       <StyledTitle>All varieties</StyledTitle>
-      <div className="cp-c-padding-1 cp-c-md-padding-2 cp-c-lg-padding-3  cp-c-row cp-c-wrap">
+      <div className="cp-c-padding-2 cp-c-lg-padding-3  cp-c-row cp-c-wrap">
         {varieties.map((variety) => (
           <div
             className="cp-i-100 cp-i-sm-50 cp-i-md-33 cp-i-lg-25 cp-i-xl-20"

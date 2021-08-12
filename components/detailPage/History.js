@@ -82,7 +82,7 @@ const History = ({ koi }) => {
   }, []);
   return (
     <>
-      <Container className="cp-c-padding-1 cp-c-md-padding-2 cp-c-lg-padding-3 cp-c-row cp-c-wrap">
+      <Container className="cp-c-padding-2 cp-c-lg-padding-3 cp-c-row cp-c-wrap">
         <div className="cp-i-100 cp-i-md-60">
           <Card>
             <SubTitle>Overview</SubTitle>

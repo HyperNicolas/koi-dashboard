@@ -73,7 +73,7 @@ export const Title = styled.div`
   ${media.lg} {
     font-size: 2rem;
     line-height: 3rem;
-    padding: 2rem;
+    padding: 1.5rem 2rem;
     padding-top: 0;
   }
 `;

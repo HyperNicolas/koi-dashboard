@@ -14,7 +14,7 @@ import {
 import 'react-image-lightbox/style.css';
 
 export const CardContainer = styled.div`
-  padding: 0 0.5rem;
+  padding: 0 1rem;
 
   ${media.md} {
     padding: 0 1rem;
@@ -164,7 +164,7 @@ const Evolution = ({ koi }) => {
           </ImagesContainer>
         </Card>
       </CardContainer>
-      <div className="cp-c-row cp-c-padding-1 cp-c-md-padding-2 cp-c-lg-padding-3 cp-c-wrap">
+      <div className="cp-c-row cp-c-padding-2 cp-c-lg-padding-3 cp-c-wrap">
         <div className="cp-i-100 cp-i-md-50">
           <Card padding="0">
             <IframeContainer>
