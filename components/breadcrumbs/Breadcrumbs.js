@@ -16,15 +16,14 @@ const Container = styled.div`
   font-size: 0.9rem;
   padding: 1rem;
   color: rgba(0, 0, 0, 0.45);
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
 
   ${media.md} {
     padding: 1.5rem;
-    padding-bottom: 1rem;
   }
   ${media.lg} {
     padding: 2rem;
-    padding-bottom: 1.25rem;
+    padding-bottom: 1.5rem;
   }
 `;
 const LastBreadcrumb = styled.span`

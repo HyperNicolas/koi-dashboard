@@ -85,11 +85,9 @@ export const StyledIcon = styled(AiOutlineDown)`
 `;
 const TitleContainer = styled.div`
   padding-bottom: ${(props) => (props.history ? '0.25rem' : '0.75rem')};
-  ${media.md} {
-    padding-bottom: ${(props) => (props.history ? '0.5rem' : '1rem')};
-  }
+
   ${media.lg} {
-    padding-bottom: ${(props) => (props.history ? '0.5rem' : '1.5rem')};
+    padding-bottom: ${(props) => (props.history ? '1rem' : '2rem')};
   }
 `;
 const StyledTitle = styled(Title)`
