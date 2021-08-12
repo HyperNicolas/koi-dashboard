@@ -60,6 +60,10 @@ const LayoutContainer = (props) => {
   useEffect(() => {
     document.getElementById('menu') &&
       setMenuWidth(document.getElementById('menu').offsetWidth);
+  }, []);
+  useEffect(() => {
+    document.getElementById('menu') &&
+      setMenuWidth(document.getElementById('menu').offsetWidth);
   }, [width]);
 
   return (
