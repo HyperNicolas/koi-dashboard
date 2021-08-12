@@ -23,7 +23,8 @@ const Container = styled.div`
   }
   ${media.lg} {
     padding-left: 2rem;
-    padding-bottom: 0.8rem;
+    padding-bottom: 1rem;
+    padding-top: 2rem;
   }
 `;
 const LastBreadcrumb = styled.span`
