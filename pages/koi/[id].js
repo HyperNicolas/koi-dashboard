@@ -17,7 +17,7 @@ const PopoverContainer = styled.div`
   font-size: 1.1rem;
   padding: 0.5rem;
   padding-top: 1rem;
-  padding-bottom: ${(props) => props.history && '0.25rem'};
+  padding-bottom: ${(props) => (props.history ? '0.25rem' : '0')};
 
   ${media.sm} {
     padding-left: 0;

@@ -18,11 +18,12 @@ const Container = styled.div`
   color: rgba(0, 0, 0, 0.45);
 
   ${media.md} {
-    padding-left: 1.5rem;
-    padding-top: 1.5rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
   }
   ${media.lg} {
     padding-left: 2rem;
+    padding-bottom: 0.8rem;
   }
 `;
 const LastBreadcrumb = styled.span`

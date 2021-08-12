@@ -68,7 +68,7 @@ export const Title = styled.div`
   ${media.lg} {
     padding: 1.5rem 2rem;
     font-size: 2rem;
-    line-height: 2rem;
+    line-height: 2.5rem;
     padding-bottom: 1rem;
   }
 `;
