@@ -25,9 +25,7 @@ const types = {
 
 export const StyledTitle = styled(Title)`
   padding-top: 0;
-  ${media.sm} {
-    padding-bottom: 0;
-  }
+  padding-bottom: 0;
 `;
 
 const VarietyPage = ({ kois }) => {

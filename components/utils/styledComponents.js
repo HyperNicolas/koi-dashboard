@@ -65,11 +65,6 @@ export const Title = styled.div`
   color: ${(props) => props.theme.mainColor};
   padding-top: 0;
 
-  ${media.md} {
-    padding: 1.5rem;
-    padding-top: 0;
-  }
-
   ${media.lg} {
     font-size: 2rem;
     line-height: 3rem;
