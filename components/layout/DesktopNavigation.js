@@ -80,8 +80,8 @@ const CollapseText = styled.div`
 `;
 const CollapsedContainer = styled.div`
   position: absolute;
-  top: 58%;
-  left: 50%;
+  top: 52%;
+  left: 51%;
   transform: translate(-50%, -50%);
 `;
 

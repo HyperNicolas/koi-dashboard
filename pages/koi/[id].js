@@ -15,7 +15,8 @@ import Evolution from '../../components/detailPage/Evolution';
 
 const PopoverContainer = styled.div`
   font-size: 1.1rem;
-  padding: 1rem;
+  padding: 0 1rem;
+  padding-top: 0.5rem;
 
   ${media.sm} {
     padding: 0;
@@ -33,13 +34,17 @@ const PopoverContainer = styled.div`
 `;
 const Filter = styled.span`
   background: #fff;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
   box-shadow: 10px 11px 40px rgba(20, 61, 123, 0.05);
   border-radius: 10px;
   min-width: 3rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: ${(props) => props.theme.mainColor};
 
+  ${media.sm} {
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+  }
   ${media.md} {
     padding-left: 1.5rem;
   }
@@ -53,13 +58,13 @@ const ContainerStyleDesktop = {
   zIndex: '101',
 };
 const ContainerStyleMobile = {
-  left: '0.25rem',
-  right: '0.25rem',
+  left: '1rem',
+  right: '1rem',
   borderRadius: '10px',
   background: '#fff',
   boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
   zIndex: '101',
-  width: '97%',
+  width: '92%',
 };
 const FilterOption = styled.div`
   text-align: center;
