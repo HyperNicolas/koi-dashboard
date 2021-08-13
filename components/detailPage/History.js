@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { orderBy } from 'lodash';
-import { Timeline } from 'antd';
 import { urlFor } from '../../lib/sanity';
 import {
   getHistoryFormattedDate,
@@ -10,8 +9,6 @@ import {
   getFormattedDate,
 } from '../utils/ageCalculator';
 import { Card, SubTitle } from '../utils/styledComponents';
-
-import 'antd/dist/antd.css';
 
 const Container = styled.div`
   padding-top: 0 !important;
@@ -35,14 +32,50 @@ const Divider = styled.div`
   border-bottom: 1px solid #e8e8e8;
 `;
 
-const TimeLineContainer = styled.div`
+const TimeLineContainer = styled.ul`
   padding: 1rem;
   padding-top: 1.5rem;
-
-  & > .antd & .ant-timeline-item-head-blue {
-    color: ${(props) => props.theme.mainColor};
-    border-color: ${(props) => props.theme.mainColor};
-  }
+`;
+const Timeline = styled.ul`
+  box-sizing: border-box;
+  color: #000000d9;
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  font-feature-settings: 'tnum';
+  margin: 0;
+  padding: 0;
+  list-style: none;
+`;
+const TimelineItem = styled.li`
+  position: relative;
+  margin: 0;
+  padding-bottom: 20px;
+  font-size: 14px;
+  list-style: none;
+`;
+const Trail = styled.div`
+  position: absolute;
+  top: 10px;
+  left: 4px;
+  height: calc(100% - 10px);
+  border-left: 2px solid #f0f0f0;
+`;
+const Dot = styled.div`
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border: 2px solid transparent;
+  border-radius: 100px;
+  color: ${(props) => props.theme.mainColor};
+  border-color: ${(props) => props.theme.mainColor};
+`;
+const TimelineContent = styled.div`
+  position: relative;
+  top: -7.001px;
+  margin: 0 0 0 26px;
+  word-break: break-word;
 `;
 
 const getNewKoi = (koi) => {
@@ -153,11 +186,15 @@ const History = ({ koi }) => {
               <Timeline>
                 {orderBy(newKoi.updates, ['date'], ['desc']).map(
                   ({ length, date, age }, index) => (
-                    <Timeline.Item color="#3A3878" key={index}>
-                      {`${getFormattedDate(
-                        date
-                      )} - ${length}cm - ${age} months`}
-                    </Timeline.Item>
+                    <TimelineItem color="#3A3878" key={index}>
+                      {newKoi.updates.length != index + 1 && <Trail />}
+                      <Dot />
+                      <TimelineContent>
+                        {`${getFormattedDate(
+                          date
+                        )} - ${length}cm - ${age} months`}
+                      </TimelineContent>
+                    </TimelineItem>
                   )
                 )}
               </Timeline>
