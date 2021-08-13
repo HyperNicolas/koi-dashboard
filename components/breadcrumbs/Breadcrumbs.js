@@ -18,9 +18,6 @@ const Container = styled.div`
   color: rgba(0, 0, 0, 0.45);
   padding-bottom: 0.75rem;
 
-  ${media.md} {
-    padding: 1.5rem;
-  }
   ${media.lg} {
     padding: 2rem;
     padding-bottom: 1.5rem;
