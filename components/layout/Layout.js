@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { AiOutlineHome } from 'react-icons/ai';
+import { AiOutlineHome } from '@react-icons/all-files/ai/AiOutlineHome';
 import DesktopNavigation from './DesktopNavigation';
 import MobileNavigation from './MobileNavigation';
 import { KoiSVG, useWindowSize, media } from '../utils/styledComponents';

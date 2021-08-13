@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { BsArrowReturnLeft } from 'react-icons/bs';
+import { BsArrowReturnLeft } from '@react-icons/all-files/bs/BsArrowReturnLeft';
 import styled from 'styled-components';
 import { KoiSVG } from '../utils/styledComponents';
 

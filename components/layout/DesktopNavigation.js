@@ -2,8 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
-import { AiOutlineHome } from 'react-icons/ai';
-import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs';
+import { BsArrowBarLeft } from '@react-icons/all-files/bs/BsArrowBarLeft';
+import { BsArrowBarRight } from '@react-icons/all-files/bs/BsArrowBarRight';
 import { KoiSVG } from '../utils/styledComponents';
 
 const KoiIcon = (props) => <KoiSVG {...props} />;

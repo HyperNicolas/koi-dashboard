@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { AiOutlineHome } from 'react-icons/ai';
+import { AiOutlineHome } from '@react-icons/all-files/ai/AiOutlineHome';
 import Link from 'next/link';
 import { media, iconCss } from '../utils/styledComponents';
 

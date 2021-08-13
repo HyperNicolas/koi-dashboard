@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Popover from 'react-tiny-popover';
 import styled from 'styled-components';
-import { AiOutlineDown } from 'react-icons/ai';
+import { AiOutlineDown } from '@react-icons/all-files/ai/AiOutlineDown';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import { getKoiById, getAllKoisWithSlug } from '../../lib/api';
 import {
