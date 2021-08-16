@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { AiOutlineHome } from '@react-icons/all-files/ai/AiOutlineHome';
 import DesktopNavigation from './DesktopNavigation';
 import MobileNavigation from './MobileNavigation';
-import { KoiSVG, useWindowSize, media } from '../utils/styledComponents';
+import { KoiSVG, media } from '../utils/styledComponents';
 
 const KoiIcon = (props) => <KoiSVG {...props} />;
 const links = [
@@ -49,22 +49,18 @@ const DesktopContainer = styled.div`
 
 const LayoutContainer = (props) => {
   const [collapsed, setCollapsed] = useState(true);
-  const [menuWidth, setMenuWidth] = useState('100');
-  const width = useWindowSize();
+  const [menuWidth, setMenuWidth] = useState('73');
 
   useEffect(() => {
     document.getElementById('menu') &&
       setMenuWidth(document.getElementById('menu').offsetWidth);
   }, [collapsed]);
   useEffect(() => {
-    document.getElementById('menu') &&
-      setMenuWidth(document.getElementById('menu').offsetWidth);
+    setTimeout(() => {
+      document.getElementById('menu') &&
+        setMenuWidth(document.getElementById('menu').offsetWidth);
+    }, 100);
   }, []);
-  useEffect(() => {
-    document.getElementById('menu') &&
-      setMenuWidth(document.getElementById('menu').offsetWidth);
-  }, [width]);
-
   return (
     <Container className="cp-c-row">
       <MobileContainer>
