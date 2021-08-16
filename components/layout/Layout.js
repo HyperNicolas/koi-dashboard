@@ -49,7 +49,7 @@ const DesktopContainer = styled.div`
 
 const LayoutContainer = (props) => {
   const [collapsed, setCollapsed] = useState(true);
-  const [menuWidth, setMenuWidth] = useState('68');
+  const [menuWidth, setMenuWidth] = useState('100');
   const width = useWindowSize();
 
   useEffect(() => {
