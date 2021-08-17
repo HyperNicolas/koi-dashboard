@@ -12,7 +12,7 @@
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
   },
   "dependencies": {
-    "@next/bundle-analyzer": "11.0.1",
+    "@next/bundle-analyzer": "11.1.0",
     "@react-icons/all-files": "4.1.0",
     "@sanity/cli": "2.13.1",
     "@sanity/client": "2.13.0",
@@ -23,7 +23,7 @@
     "date-fns": "2.23.0",
     "hyperplan": "0.4.1",
     "lodash": "4.17.21",
-    "next": "11.0.1",
+    "next": "11.1.0",
     "react": "17.0.2",
     "react-chartjs-2": "3.0.4",
     "react-dom": "17.0.2",
@@ -39,6 +39,6 @@
     "babel-plugin-lodash": "^3.3.4",
     "babel-plugin-styled-components": "latest",
     "eslint": "7.32.0",
-    "eslint-config-next": "11.0.1"
+    "eslint-config-next": "11.1.0"
   }
 }

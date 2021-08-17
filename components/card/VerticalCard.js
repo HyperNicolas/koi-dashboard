@@ -26,6 +26,11 @@ const CardText = styled.div`
   text-align: center;
   color: ${(props) => props.theme.mainColor};
 `;
+const Text = styled.div`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
 
 const VerticalCard = ({ kois }) =>
   kois.map(({ id, sex, updates, bloodline, birthDate, breeder }) => (
@@ -47,8 +52,8 @@ const VerticalCard = ({ kois }) =>
                 />
               </ImageContainer>
               <CardText>
-                <div>{`${getCurrentAgeTextCard(birthDate)} ${breeder}`}</div>
-                <div>{`${bloodline ? bloodline : ''} ${sex}`}</div>
+                <Text>{`${getCurrentAgeTextCard(birthDate)} ${breeder}`}</Text>
+                <Text>{`${bloodline ? bloodline : ''} ${sex}`}</Text>
               </CardText>
             </div>
           </StyledCard>
