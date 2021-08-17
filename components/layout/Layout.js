@@ -59,7 +59,7 @@ const LayoutContainer = (props) => {
     setTimeout(() => {
       document.getElementById('menu') &&
         setMenuWidth(document.getElementById('menu').offsetWidth);
-    }, 100);
+    }, 500);
   }, []);
   return (
     <Container className="cp-c-row">
