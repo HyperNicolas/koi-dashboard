@@ -10,7 +10,7 @@ const VarietyPage = ({ kois }) =>
   kois ? (
     <section>
       <Breadcrumbs links={[]} currentBreadcrumbText="All your koi" />
-      <StyledTitle>All your koi</StyledTitle>
+      <StyledTitle>All your {kois.length} koi</StyledTitle>
       <div className="cp-c-row cp-c-align-start-start cp-c-padding-2 cp-c-lg-padding-3  cp-c-wrap">
         <VerticalCard kois={kois} />
       </div>
