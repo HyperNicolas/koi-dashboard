@@ -10,9 +10,6 @@ import {
 } from '../utils/ageCalculator';
 import { Card, SubTitle } from '../utils/styledComponents';
 
-const Container = styled.div`
-  padding-top: 0 !important;
-`;
 const ImageContainer = styled.div`
   position: relative;
   height: 9rem;
@@ -114,95 +111,91 @@ const History = ({ koi }) => {
     setKoiData(getKoiData(newKoi));
   }, []);
   return (
-    <>
-      <Container className="cp-c-padding-2 cp-c-lg-padding-3 cp-c-row cp-c-wrap">
-        <div className="cp-i-100 cp-i-md-60">
-          <Card>
-            <SubTitle>Overview</SubTitle>
-            {orderBy(newKoi.updates, ['date'], ['desc']).map(
-              ({ length, date, image, age }, index) => (
-                <OverviewContainer
-                  key={index}
-                  className="cp-c-row cp-c-align-start-center"
-                >
-                  <ImageContainer className="cp-i-15">
-                    <Image
-                      src={urlFor(image)}
-                      layout="fill"
-                      objectFit="contain"
-                      alt="age"
-                      priority
-                    />
-                  </ImageContainer>
-                  <div key={index} className="cp-i-flex cp-c-column">
-                    <Date>{getHistoryFormattedDate(date)}</Date>
-                    <Divider />
-                    {index == koi.updates.length - 1 ? (
+    <div className="cp-c-padding-2 cp-c-lg-padding-3 cp-c-row cp-c-wrap">
+      <div className="cp-i-100 cp-i-md-60">
+        <Card>
+          <SubTitle>Overview</SubTitle>
+          {orderBy(newKoi.updates, ['date'], ['desc']).map(
+            ({ length, date, image, age }, index) => (
+              <OverviewContainer
+                key={index}
+                className="cp-c-row cp-c-align-start-center"
+              >
+                <ImageContainer className="cp-i-15">
+                  <Image
+                    src={urlFor(image)}
+                    layout="fill"
+                    objectFit="contain"
+                    alt="age"
+                    priority
+                  />
+                </ImageContainer>
+                <div key={index} className="cp-i-flex cp-c-column">
+                  <Date>{getHistoryFormattedDate(date)}</Date>
+                  <Divider />
+                  {index == koi.updates.length - 1 ? (
+                    <div>
+                      Started at an age of <b>{age} months</b> with a size of{' '}
+                      <b>{length}cm</b>
+                    </div>
+                  ) : (
+                    koiDate.length != 0 && (
                       <div>
-                        Started at an age of <b>{age} months</b> with a size of{' '}
-                        <b>{length}cm</b>
-                      </div>
-                    ) : (
-                      koiDate.length != 0 && (
                         <div>
-                          <div>
-                            Grew{' '}
-                            <b>
-                              {koiDate[index].length -
-                                koiDate[index + 1].length}
-                              cm
-                            </b>{' '}
-                            in a span of{' '}
-                            <b>
-                              {koiDate[index].age - koiDate[index + 1].age}{' '}
-                              months
-                            </b>
-                            .
-                          </div>
-                          <div>
-                            This is an average of{' '}
-                            <b>
-                              {(
-                                (koiDate[index].length -
-                                  koiDate[index + 1].length) /
-                                (koiDate[index].age - koiDate[index + 1].age)
-                              ).toFixed(2)}
-                              cm/month
-                            </b>
-                          </div>
+                          Grew{' '}
+                          <b>
+                            {koiDate[index].length - koiDate[index + 1].length}
+                            cm
+                          </b>{' '}
+                          in a span of{' '}
+                          <b>
+                            {koiDate[index].age - koiDate[index + 1].age} months
+                          </b>
+                          .
                         </div>
-                      )
-                    )}
-                  </div>
-                </OverviewContainer>
-              )
-            )}
-          </Card>
-        </div>
-        <div className="cp-i-100 cp-i-md-40">
-          <Card>
-            <SubTitle>Summary</SubTitle>
-            <TimeLineContainer>
-              <Timeline>
-                {orderBy(newKoi.updates, ['date'], ['desc']).map(
-                  ({ length, date, age }, index) => (
-                    <TimelineItem color="#3A3878" key={index}>
-                      {newKoi.updates.length != index + 1 && <Trail />}
-                      <Dot />
-                      <TimelineContent>
-                        {`${getFormattedDate(
-                          date
-                        )} - ${length}cm - ${age} months`}
-                      </TimelineContent>
-                    </TimelineItem>
-                  )
-                )}
-              </Timeline>
-            </TimeLineContainer>
-          </Card>
-        </div>
-      </Container>
-    </>
+                        <div>
+                          This is an average of{' '}
+                          <b>
+                            {(
+                              (koiDate[index].length -
+                                koiDate[index + 1].length) /
+                              (koiDate[index].age - koiDate[index + 1].age)
+                            ).toFixed(2)}
+                            cm/month
+                          </b>
+                        </div>
+                      </div>
+                    )
+                  )}
+                </div>
+              </OverviewContainer>
+            )
+          )}
+        </Card>
+      </div>
+      <div className="cp-i-100 cp-i-md-40">
+        <Card>
+          <SubTitle>Summary</SubTitle>
+          <TimeLineContainer>
+            <Timeline>
+              {orderBy(newKoi.updates, ['date'], ['desc']).map(
+                ({ length, date, age }, index) => (
+                  <TimelineItem color="#3A3878" key={index}>
+                    {newKoi.updates.length != index + 1 && <Trail />}
+                    <Dot />
+                    <TimelineContent>
+                      {`${getFormattedDate(
+                        date
+                      )} - ${length}cm - ${age} months`}
+                    </TimelineContent>
+                  </TimelineItem>
+                )
+              )}
+            </Timeline>
+          </TimeLineContainer>
+        </Card>
+      </div>
+    </div>
   );
 };
 
