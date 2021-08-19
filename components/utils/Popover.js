@@ -31,13 +31,18 @@ const Filter = styled.span`
   min-width: 3rem;
   font-size: 1.2rem;
   color: ${(props) => props.theme.mainColor};
+  height: 3rem;
 
   ${media.sm} {
     padding: 0.5rem 1rem;
     font-size: 1.1rem;
+    height: 2.3rem;
   }
   ${media.md} {
     padding-left: 1.5rem;
+  }
+  ${media.lg} {
+    height: 3rem;
   }
 `;
 const StyledPopover = styled(Popover)`
