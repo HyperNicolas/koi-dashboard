@@ -26,7 +26,7 @@ const PopoverContainer = styled.div`
 const Filter = styled.span`
   background: #fff;
   padding: 1rem;
-  box-shadow: 10px 11px 40px rgba(20, 61, 123, 0.05);
+  box-shadow: 0px 4px 30px rgba(20, 61, 123, 0.05);
   border-radius: 10px;
   min-width: 3rem;
   font-size: 1.2rem;

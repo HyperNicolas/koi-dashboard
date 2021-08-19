@@ -56,10 +56,7 @@ const LayoutContainer = (props) => {
       setMenuWidth(document.getElementById('menu').offsetWidth);
   }, [collapsed]);
   useEffect(() => {
-    setTimeout(() => {
-      document.getElementById('menu') &&
-        setMenuWidth(document.getElementById('menu').offsetWidth);
-    }, 500);
+    setMenuWidth('73');
   }, []);
   return (
     <Container className="cp-c-row">
