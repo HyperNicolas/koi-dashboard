@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import { getKoiById, getAllKoisWithSlug } from '../../lib/api';
-import { Title, slugify } from '../../components/utils/styledComponents';
+import { slugify } from '../../components/utils/styledComponents';
 import PopoverComponent from '../../components/utils/Popover';
 import History from '../../components/detailPage/History';
 import Evolution from '../../components/detailPage/Evolution';

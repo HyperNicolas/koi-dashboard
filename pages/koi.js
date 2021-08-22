@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { orderBy } from 'lodash';
+import { useRouter } from 'next/router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import PopoverComponent from '../components/utils/Popover';
 import { getAllKoi } from '../lib/api';
@@ -17,7 +18,26 @@ const filterOptions = [{ title: 'Most recent' }, { title: 'Variety' }];
 
 const VarietyPage = ({ kois }) => {
   const [visible, setVisible] = useState(false);
-  const [dropdown, setDropdown] = useState('Most recent');
+  const [dropdown, setDropdown] = useState(undefined);
+  const router = useRouter();
+  useEffect(() => {
+    if (!router.query.order) {
+      setDropdown(
+        router.query.order ? router.query.order : filterOptions[0].title
+      );
+      router.push({
+        pathname: '/koi',
+        query: { order: filterOptions[0].title },
+      });
+    } else {
+      setDropdown(router.query.order);
+    }
+  }, []);
+
+  const changeRoute = (id) => {
+    setDropdown(id);
+    router.push({ pathname: '/koi', query: { order: id } });
+  };
 
   return kois ? (
     <section>
@@ -26,7 +46,7 @@ const VarietyPage = ({ kois }) => {
         filterOptions={filterOptions}
         title={`All your ${kois.length}`}
         dropdown={dropdown}
-        setDropdown={setDropdown}
+        setDropdown={changeRoute}
         visible={visible}
         setVisible={setVisible}
       />

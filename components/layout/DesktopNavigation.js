@@ -101,7 +101,7 @@ const DesktopNavigation = ({ links, collapsed, setCollapsed }) => {
                   : router.asPath.includes(routePath)
                 ).toString(router.asPath)}
               >
-                {route != '/koi' ? (
+                {routePath != '/koi' ? (
                   <IconContainer>{icon}</IconContainer>
                 ) : (
                   <StyledKoiIcon

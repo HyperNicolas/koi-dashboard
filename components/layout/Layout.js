@@ -9,7 +9,7 @@ const KoiIcon = (props) => <KoiSVG {...props} />;
 const links = [
   { route: '/', title: 'Varieties', icon: <AiOutlineHome />, routePath: '/' },
   {
-    route: '/koi',
+    route: '/koi?order=Most+recent',
     title: 'All koi',
     icon: <KoiIcon />,
     routePath: '/koi',
